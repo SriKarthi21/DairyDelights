@@ -18,8 +18,6 @@ This project will allow you to apply the React skills you've learned to build a 
 
 - The dairy products are displayed with attractive images and crisp details, allowing the users to select the item of their choice and provide the order details. ​
 
-  - The app should seek confirmation from the users before allowing them to navigate away from the order view without submitting the details.​
-
 - The app can search and filter the items by the user’s preference for a quick selection. ​
 
 - The site administrator can view the incoming order requests.​
@@ -45,7 +43,7 @@ This project will allow you to apply the React skills you've learned to build a 
 - This view should also allow user to provide the details required for placing order for the selected item.
   - The details should include the item details as well as the customer details.
 - The details should be persisted, and the customer should be acknowledged after the order is successfully placed.​
-- The app will request confirmation from the user to leave the view, if the user attempts to navigate away from this view without submitting the request.
+
 
 ##### Task 3 – Design Login View
 
@@ -55,7 +53,7 @@ This project will allow you to apply the React skills you've learned to build a 
 
 ##### Task 4 – Design Order-Requests View
 
-- This view will display all the daury products order requests received in tabular format.
+- This view will display all the dairy products order requests received in tabular format.
 - This view has restricted access and is accessible only to the site administrator.
 
 #### Instructions for the Project
