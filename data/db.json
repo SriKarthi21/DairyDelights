@@ -24,7 +24,7 @@
       "productName": "Milk Tetra Pack",
       "description": "1 litre bottle pack",
       "price": "100",
-      "image": "dairies/milk_tetra.jpg",
+      "image": "dairies/milk-tetra.jpg",
       "nutritionalValue": "rich in calcium. good for bones"
     },
     {
@@ -141,7 +141,7 @@
       "productName": "White Butter",
       "description": "200gm pack",
       "price": "100",
-      "image": "dairies/homemade_white_butter.jpg",
+      "image": "dairies/home_made_white_butter_.jpg",
       "nutritionalValue": "rich in calcium. good for bones, lowers bad cholesterol"
     },
     {

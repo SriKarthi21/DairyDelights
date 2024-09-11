@@ -1,8 +1,9 @@
+import { Grid2 } from '@mui/material';
 import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <Grid2 sx={{backgroundColor:"blueviolet",color:"white"}}>Footer</Grid2>
   )
 }
 
