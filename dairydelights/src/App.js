@@ -6,6 +6,11 @@ import Footer from './components/Footer';
 import axios from 'axios';
 import MenuBar from './components/MenuBar';
 import applyFilters from './utils.js/FilterCard';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import PageNotFound from './components/PageNotFound';
+import Login from './components/Login';
+import ProductDetail from './components/ProductDetail';
+import Orders from './components/Orders';
 function App() {
 
   const [value,setValue]=useState([]);
@@ -30,13 +35,18 @@ function App() {
   const handleClear=(e)=>{setSearchText("")}
 let filteredData=applyFilters(value,filterCatergory,searchText)
   return (
-    <div className="App">
-      <Header onSearchText={searchText} onSearch={handleSearch} onClearText={handleClear}/>
-{/* <input onChange={handleSearch} type="text" /> */}
-      <MenuBar onfilterValue={filterCatergory} onFilter={handleFilter}/>
-      <ProductView data={filteredData} />
-      <Footer/>
-    </div>
+  <BrowserRouter>
+        <Header onSearchText={searchText} onSearch={handleSearch} onClearText={handleClear}/>
+        <MenuBar onfilterValue={filterCatergory} onFilter={handleFilter}/>
+<Routes>
+  <Route     path="/"  element={ <ProductView data={filteredData} />} />
+  <Route path="/details/:id" element={ <ProductDetail/>} />
+  <Route path="/login" element={<Login/>}  />
+  <Route path="/orders" element={<Orders />} />
+  <Route path="/*" element={<PageNotFound />} />
+</Routes> 
+      <Footer/> 
+  </BrowserRouter>
   );
 }
 
