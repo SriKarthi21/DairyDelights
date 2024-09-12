@@ -77,7 +77,7 @@ Care Instructions
         </Card>
     </Box>
    </Grid2 >
-<Grid2  m={5} backgroundColor="whitesmoke" borderRadius={'10px'}>
+<Grid2  m={5}  borderRadius={'10px'}>
   <UserForm product={product} />
 
 </Grid2>

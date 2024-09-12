@@ -3,3 +3,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.headerLogo {
+  height: 70px;
+  width: 100px;
+  margin-right: 20px;
+  border-radius: 20px;
+
+}

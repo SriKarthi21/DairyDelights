@@ -7,15 +7,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from 'react-router-dom';
+import AuthContext from '../utils.js/AuthContext';
+import { useContext } from 'react';
 const Header = ({ onSearch, onSearchText, onClearText }) => {
+ const{isLoggedIn}=useContext(AuthContext);
   return (
-    <Grid2 bgcolor={'white'}>
+    <Grid2 >
       <Grid2 display='flex' alignItems={'center'}
         justifyContent={'space-evenly'}>
-        <Grid2 >
-          <img src="/dairies/dairy.jpg" alt="logo pic" width={'200px'} height={'50px'} />
-
-        </Grid2>
+         
+        
+<img src="/logo.png" className="headerLogo" alt="header logo" />
         <Grid2>
           <TextField variant="outlined" label='Search Products'
             onChange={onSearch} value={onSearchText}
@@ -40,12 +42,16 @@ const Header = ({ onSearch, onSearchText, onClearText }) => {
           <Link to="/">
             <IconButton> <HomeIcon fontSize='large' /> </IconButton>
           </Link>
+        {isLoggedIn ?( 
+           <Link>
+           <IconButton> <LogoutIcon fontSize='large' /> </IconButton>
+         </Link>
+        ):(   
           <Link to="/login">
             <IconButton> <LoginIcon fontSize='large' />  </IconButton>
           </Link>
-          <Link>
-            <IconButton> <LogoutIcon fontSize='large' /> </IconButton>
-          </Link>
+        )}  
+         
         </Grid2>
       </Grid2>
     </Grid2>

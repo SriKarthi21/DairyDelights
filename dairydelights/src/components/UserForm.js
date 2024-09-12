@@ -4,7 +4,7 @@ import { Button,  Grid2, TextField, Typography } from '@mui/material'
 import axios from 'axios';
 import styled from '@emotion/styled/macro';
 import { useNavigate } from 'react-router-dom';
-
+import { enqueueSnackbar, useSnackbar } from 'notistack';
 const Error = styled.p`
   color: red;
   font-size: 0.8rem;
@@ -12,15 +12,22 @@ const Error = styled.p`
 `;
 const UserForm = ({product}) => {
   const navigate=useNavigate();
-  async function saveForm(data) {
+  const saveForm=async(data)=> {
     try {
       const response = await axios.post("http://localhost:3000/orders", data);
-      console.log(response.data);
-
-      alert("SUBMITTED")
-      // navigate("/");
-    } catch (error) {
+      console.log(response.data)
+      enqueueSnackbar("Order placed successfully:",{
+        variant:"success",
+        autoHideDuration:2000,
+        anchorOrigin:{
+          vertical:"top",
+          horizontal:"right"
+        }
+      });
+    } 
+    catch (error) {
       console.log(error)
+      enqueueSnackbar("Error while adding", {variant:"error"});
     }
   };
   const{productName,id,price}=product;
@@ -29,12 +36,13 @@ const UserForm = ({product}) => {
           console.log("button clicked")
            data={...data,productName,id}
           saveForm(data);
+          navigate("/")
           reset();
         };
     const{register,handleSubmit,formState:{errors},trigger,reset}=useForm();
   return (
     <div>
-            <Grid2 container   spacing={5} p={5} alignContent={'center'}>
+            <Grid2    spacing={5} alignContent={'center'}>
             
             <Grid2 display={'flex'}p={2}  xs={12} sm={6} >
             
@@ -44,7 +52,7 @@ const UserForm = ({product}) => {
               <Typography variant='subtitle' p='2px' bgcolor={"gray"} color='white'>&#8377; {price}</Typography>
              
   <Grid2  container spacing={5}>
-    <Grid2 item xs={12} md={6}> 
+    <Grid2 item xs={12} md={6}mb={1}> 
             <TextField width={'100%'} name='firstName' variant="standard"  label="First Name *"
             {...register('firstName',{
                 required:"Name is required",
@@ -52,7 +60,7 @@ const UserForm = ({product}) => {
             onBlur={(e)=>trigger('firstName')}/> 
            <Error>{errors.firstName?.message}</Error>
     </Grid2> 
-    <Grid2 item xs={12} md={6}>
+    <Grid2 item xs={12} md={6} >
       <TextField name='lastName' variant="standard" label="Last Name *"
       {...register('lastName',{
           required:"Last Name is required"
@@ -61,7 +69,7 @@ const UserForm = ({product}) => {
       <Error>{errors.firstName?.message}</Error>
     </Grid2>
 </Grid2>
-<Grid2 spacing={5} container>
+<Grid2 spacing={5} container mb={1}>
     <Grid2 item xs={12} md={6}>
       <TextField name='email' variant="standard" label="Email *"
       {...register('email',{
@@ -86,7 +94,7 @@ const UserForm = ({product}) => {
 
           </Grid2>
 </Grid2>
-<Grid2 container spacing={5}>
+<Grid2 container spacing={5}mb={1}>
   <Grid2 item xs={12}  md={6} lg={4}><TextField  name='quantity'label='Quantity *' variant='standard'
             {...register('quantity',{
               required:'Quantity is required',
@@ -112,7 +120,7 @@ const UserForm = ({product}) => {
             })} onBlur={(e) => trigger("address")}fullWidth
           />
           <Error>{errors.address?.message}</Error>
-    <Grid2 container spacing={5} >
+    <Grid2 container spacing={5}mt={1}mb={2} >
       <Grid2 item xs={12} md={6}>
       <TextField name="city" variant='standard' label='City'
               {...register("city", {
@@ -137,7 +145,7 @@ const UserForm = ({product}) => {
            <TextField name="postalCode" variant='standard' label='Postal Code'
               {...register("postalCode", {
                 required: "Postal Code is required",
-                maxLength: { value: 6, message: "postal Code must be 5 digits" },
+                maxLength: { value: 6, message: "postal Code must be 6 digits" },
                 pattern: {
                   value: /^\d{6}$/, message: "Valid postal code should have 6 digits"
                 }
@@ -150,9 +158,9 @@ const UserForm = ({product}) => {
     </Grid2>
 
             <br/>
-            <Grid2 display={'flex'}   spacing={2}>         
+            <Grid2 display={'flex'}  justifyContent={'space-evenly'} >         
               <Button  variant='contained' type="reset" onClick={() => reset()}>Reset</Button>
-              <Button variant='contained' type="submit">Place Order</Button>
+              <Button  variant='contained' type="submit">Place Order</Button>
           </Grid2>
 
             </form>  

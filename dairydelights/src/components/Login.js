@@ -2,8 +2,13 @@ import { Grid2,Button,TextField } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useContext } from 'react';
+import AuthContext from '../utils.js/AuthContext';
+import { enqueueSnackbar, useSnackbar } from 'notistack';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+
     const[loginData,setloginData]=useState({
         adminName:"",
         adminPassword:""
@@ -24,11 +29,19 @@ const Login = () => {
     const validateLogin=()=>{
     
       if(loginData.adminName.trim()==="milk" && loginData.adminPassword.trim()==="milk@123"){
-        alert("Login Success");
-        // login();
-        navigate("/orders");
+        enqueueSnackbar("Login successfully:",{
+          variant:"success",
+          autoHideDuration:2000,
+          anchorOrigin:{
+            vertical:"top",
+            horizontal:"right"
+          }
+        });   
+          login();
+          navigate("/orders");
       }else{
         setError("Enter valid Name and Password")
+        enqueueSnackbar("Login Failed", {variant:"error"});
       }
     }
   return (

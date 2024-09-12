@@ -1,5 +1,5 @@
 import './App.css';
-import {useState,useEffect} from 'react';
+import {useState,useEffect,useContext} from 'react';
 import Header from './components/Header';
 import ProductView from './components/ProductView';
 import Footer from './components/Footer';
@@ -11,26 +11,36 @@ import PageNotFound from './components/PageNotFound';
 import Login from './components/Login';
 import ProductDetail from './components/ProductDetail';
 import Orders from './components/Orders';
+import AuthContext from './utils.js/AuthContext';
+import { useSnackbar } from 'notistack';
+import { useErrorBoundary } from 'react-error-boundary';
+
+
 function App() {
 
   const [value,setValue]=useState([]);
   const [filterCatergory,setfilterCatergory]=useState("")
   const [searchText,setSearchText]=useState("")  
-
+  const { isLoggedIn } = useContext(AuthContext);
+const{showBoundary}=useErrorBoundary();
   useEffect(()=>{
-    try{
-      async function fetchData(){
+    let active=true;
+  async function fetchData(){
+      try{
         const response=await axios.get("http://localhost:3000/products")
-        setValue(response.data);
-      }     
-   fetchData();
+        setValue(response.data);    
 
     }catch(error){
       console.log("Fetching Error",Error)
+      showBoundary(error)
     }
-  
+  }
+    fetchData();
+    return()=>{
+      active=false;
+    }
   },[]);
-  const handleFilter=(e)=>{ setfilterCatergory(e.target.value) };
+  const handleFilter=(e)=>{ setfilterCatergory(e.target?.value) };
   const handleSearch=(e)=>{ setSearchText(e.target?.value ) };
   const handleClear=(e)=>{setSearchText("")}
 let filteredData=applyFilters(value,filterCatergory,searchText)
@@ -39,10 +49,10 @@ let filteredData=applyFilters(value,filterCatergory,searchText)
         <Header onSearchText={searchText} onSearch={handleSearch} onClearText={handleClear}/>
         <MenuBar onfilterValue={filterCatergory} onFilter={handleFilter}/>
 <Routes>
-  <Route     path="/"  element={ <ProductView data={filteredData} />} />
+  <Route path="/"  element={ <ProductView data={filteredData} />} />
   <Route path="/details/:id" element={ <ProductDetail/>} />
   <Route path="/login" element={<Login/>}  />
-  <Route path="/orders" element={<Orders />} />
+  {isLoggedIn && ( <Route path="/orders" element={<Orders />} />)}
   <Route path="/*" element={<PageNotFound />} />
 </Routes> 
       <Footer/> 
