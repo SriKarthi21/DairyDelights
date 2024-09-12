@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
 import AuthContext from '../utils.js/AuthContext';
-import { enqueueSnackbar, useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -28,8 +28,8 @@ const Login = () => {
     
     const validateLogin=()=>{
     
-      if(loginData.adminName.trim()==="milk" && loginData.adminPassword.trim()==="milk@123"){
-        enqueueSnackbar("Login successfully:",{
+      if(loginData.adminName.trim()==="admin" && loginData.adminPassword.trim()==="admin@123"){
+        enqueueSnackbar("Login successfully",{
           variant:"success",
           autoHideDuration:2000,
           anchorOrigin:{
@@ -50,7 +50,7 @@ const Login = () => {
     sx={{minHeight:"60vh"}}>
       <Grid2  margin={4}>
       <form onSubmit={handleSubmit}
-      style={{backgroundColor:"lightyellow",
+      style={{backgroundColor:"lightyellow",borderRadius: 3, boxShadow: "5px 5px 10px",
         display:"flex",flexDirection:"column",
         gap:"1.5em",padding:"30px 50px",maxWidth:"70vh"
       }}

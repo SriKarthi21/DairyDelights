@@ -29,7 +29,7 @@ useEffect(()=>{
     <Box maxWidth={720} >
       
       <Card sx={{ underline:"none",
-          maxWidth: 500, m: 1, bgcolor: "lightskyblue",
+          maxWidth: 700, m: 1, bgcolor: "lightskyblue",
           borderRadius: 3,
         }} >
 
@@ -77,7 +77,7 @@ Care Instructions
         </Card>
     </Box>
    </Grid2 >
-<Grid2  m={5}  borderRadius={'10px'}>
+<Grid2  m={2}  borderRadius={'10px'}>
   <UserForm product={product} />
 
 </Grid2>

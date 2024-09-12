@@ -1,24 +1,36 @@
 import React from 'react'
-import { Container, Grid2, IconButton, TextField, Typography } from '@mui/material'
-import ImageList from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+import {  Grid2, IconButton, TextField } from '@mui/material'
+import HomeSharpIcon from '@mui/icons-material/HomeSharp';
+import LoginSharpIcon from '@mui/icons-material/LoginSharp';
+import LogoutSharpIcon from '@mui/icons-material/LogoutSharp';
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from 'react-router-dom';
 import AuthContext from '../utils.js/AuthContext';
 import { useContext } from 'react';
+import { enqueueSnackbar } from 'notistack';
 const Header = ({ onSearch, onSearchText, onClearText }) => {
- const{isLoggedIn}=useContext(AuthContext);
+ const{isLoggedIn,logout}=useContext(AuthContext);
+ const handleLogout=()=>{
+enqueueSnackbar("Logut Successfully !!!",{
+  variant:"success",
+          autoHideDuration:2000,
+          anchorOrigin:{
+            vertical:"top",
+            horizontal:"right"
+          }
+        }); 
+  logout();
+  // navigate("/login")
+ }
   return (
-    <Grid2 >
+    <Grid2 bgcolor={'whitesmoke'}>
       <Grid2 display='flex' alignItems={'center'}
         justifyContent={'space-evenly'}>
          
         
 <img src="/logo.png" className="headerLogo" alt="header logo" />
-        <Grid2>
+       {!isLoggedIn &&  <Grid2>
           <TextField variant="outlined" label='Search Products'
             onChange={onSearch} value={onSearchText}
             slotProps={{
@@ -37,18 +49,18 @@ const Header = ({ onSearch, onSearchText, onClearText }) => {
               }
             }}
           />
-        </Grid2>
+        </Grid2>  }
         <Grid2  >
           <Link to="/">
-            <IconButton> <HomeIcon fontSize='large' /> </IconButton>
+            <IconButton> <HomeSharpIcon fontSize='large' /> </IconButton>
           </Link>
         {isLoggedIn ?( 
-           <Link>
-           <IconButton> <LogoutIcon fontSize='large' /> </IconButton>
+           <Link to="/">
+           <IconButton onClick={handleLogout}> <LogoutSharpIcon fontSize='large' /> </IconButton>
          </Link>
         ):(   
           <Link to="/login">
-            <IconButton> <LoginIcon fontSize='large' />  </IconButton>
+            <IconButton> <LoginSharpIcon fontSize='large' />  </IconButton>
           </Link>
         )}  
          

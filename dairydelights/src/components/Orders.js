@@ -23,7 +23,7 @@ useEffect(()=>{
   
   return (
     
-    <Grid2 minHeight={'55vh'}>
+    <Grid2 minHeight={'60vh'}>
 
 
 
@@ -31,8 +31,8 @@ useEffect(()=>{
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead bgColor={'#0a2bfc'} >
           <TableRow >
-            <TableCell sx={{color:'white'}}>Id</TableCell>
-            <TableCell sx={{color:'white'}} align="center">Name</TableCell>
+            <TableCell sx={{color:'white'}}align="center">Id</TableCell>
+            <TableCell sx={{color:'white'}}align="center">Name</TableCell>
             <TableCell sx={{color:'white'}}align="center">Email</TableCell>
             <TableCell sx={{color:'white'}}align="center">Phone </TableCell>
             <TableCell sx={{color:'white'}}align="center">Date</TableCell>

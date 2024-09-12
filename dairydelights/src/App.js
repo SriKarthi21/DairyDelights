@@ -6,13 +6,12 @@ import Footer from './components/Footer';
 import axios from 'axios';
 import MenuBar from './components/MenuBar';
 import applyFilters from './utils.js/FilterCard';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from './components/PageNotFound';
 import Login from './components/Login';
 import ProductDetail from './components/ProductDetail';
 import Orders from './components/Orders';
 import AuthContext from './utils.js/AuthContext';
-import { useSnackbar } from 'notistack';
 import { useErrorBoundary } from 'react-error-boundary';
 
 
@@ -39,7 +38,7 @@ const{showBoundary}=useErrorBoundary();
     return()=>{
       active=false;
     }
-  },[]);
+  },[searchText,showBoundary]);
   const handleFilter=(e)=>{ setfilterCatergory(e.target?.value) };
   const handleSearch=(e)=>{ setSearchText(e.target?.value ) };
   const handleClear=(e)=>{setSearchText("")}
@@ -47,7 +46,7 @@ let filteredData=applyFilters(value,filterCatergory,searchText)
   return (
   <BrowserRouter>
         <Header onSearchText={searchText} onSearch={handleSearch} onClearText={handleClear}/>
-        <MenuBar onfilterValue={filterCatergory} onFilter={handleFilter}/>
+      {!isLoggedIn &&  <MenuBar onfilterValue={filterCatergory} onFilter={handleFilter}/>  }
 <Routes>
   <Route path="/"  element={ <ProductView data={filteredData} />} />
   <Route path="/details/:id" element={ <ProductDetail/>} />

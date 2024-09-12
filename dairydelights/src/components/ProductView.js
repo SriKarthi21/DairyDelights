@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, Grid2 } from '@mui/material';
+import { Grid2 } from '@mui/material';
 import ProductCard from './ProductCard';
 const ProductView = ({data}) => {
   
@@ -7,8 +7,7 @@ const ProductView = ({data}) => {
     <Grid2 display='flex' bgcolor={'white'}>
       
       <Grid2 display='grid'
-      // item xs={12} sm={6} md={4} lg={3}
-       sx={{ padding: 2 ,mt:3,
+       sx={{ padding: 2,
  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", width:"100%"
 
       }} >
