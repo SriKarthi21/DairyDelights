@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 const ProductView = ({data}) => {
   
   return (
-    <Grid2 display='flex' bgcolor={'white'}>
+    <Grid2 display='flex' bgcolor={'white'} minHeight={'60vh'}>
       
       <Grid2 display='grid'
        sx={{ padding: 2,

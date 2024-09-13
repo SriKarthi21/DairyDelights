@@ -228,6 +228,20 @@
       "state": "Tamil Nadu",
       "postalCode": "600001",
       "productName": "Fresh Cream"
+    },
+    {
+      "id": "19",
+      "firstName": "anjali",
+      "lastName": "singhal",
+      "email": "anjali@gmail.com",
+      "contactNo": "8999999999",
+      "quantity": "1",
+      "orderDate": "2024-09-13",
+      "address": "ab street",
+      "city": "chennai",
+      "state": "tn",
+      "postalCode": "999999",
+      "productName": "Plain Yogurt - Sweet"
     }
   ]
 }

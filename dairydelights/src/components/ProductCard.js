@@ -20,6 +20,7 @@ const ProductCard = ({productCard}) => {
             height="180"
             image={image}
             alt="card images"
+            sx={{objectFit:'fill'}}
           />
           <CardContent sx={{textAlign:'center',color:'blue'}} >   
 

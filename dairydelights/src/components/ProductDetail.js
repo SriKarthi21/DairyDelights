@@ -26,30 +26,27 @@ useEffect(()=>{
     bgcolor={'white'} 
     container alignContent={'center'} >
        <Grid2>
-    <Box maxWidth={720} >
+    <Box maxWidth={750} >
       
       <Card sx={{ underline:"none",
-          maxWidth: 700, m: 1, bgcolor: "lightskyblue",
+          maxWidth: 750, m: 1, bgcolor: "white",
           borderRadius: 3,
         }} >
 
             <CardMedia
               component="img"
-              height="220"
+              height="420"
               image={`/${product.image}`}
               alt="product image"
-               objectFit="contain"
-
+style={{objectFit: 'contain',width:'100%'}}
             />
             <CardContent >   
-<Typography varient="h4"  fontWeight={'bold'}>
-Description
-</Typography >
-              <Typography component={'ul'} gutterBottom sx={{fontSize:12,textTransform:"capitalize"}}>
+      <Grid2 display={'flex'} justifyContent={'space-evenly'}>
+              <Typography  variant={'h6'}component={'li'} gutterBottom sx={{textTransform:"capitalize"}}>
               {product.description}
               </Typography> 
-     <Typography varient="h4"  fontWeight={'bold'}>Nutritional Value</Typography>
-    <Typography component={'ul'} fontSize={12} textTransform={'capitalize'}>{product.nutritionalValue}</Typography>           
+    <Typography variant={'h6'} component={'li'} textTransform={'capitalize'}>{product.nutritionalValue}</Typography>   
+    </Grid2>      
  <Typography varient="h4" fontWeight={'bold'}>
 Delivery Information
 </Typography>
@@ -61,7 +58,7 @@ Delivery Information
   Since products are perishable in nature, we attempt delivery of your order only once. The delivery cannot be redirected to other address.
   </li>
 </Typography>
-<Typography varient="h4" fontWeight={'bold'}>
+{/* <Typography varient="h4" fontWeight={'bold'}>
 Care Instructions
 </Typography>
 <Typography variant='body1' component={'ul'}sx={{fontSize:12}}>
@@ -70,7 +67,7 @@ Care Instructions
 <li><b>Expiration:</b> Please consume dairy products within their stated shelf life for optimal freshness and flavor</li>
 <li>Enjoy your product!</li>
 
-</Typography>
+</Typography> */}
 
             </CardContent>
 
