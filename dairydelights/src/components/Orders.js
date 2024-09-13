@@ -31,8 +31,8 @@ useEffect(()=>{
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead bgColor={'#0a2bfc'} >
           <TableRow >
-            <TableCell sx={{color:'white'}}align="center">Id</TableCell>
-            <TableCell sx={{color:'white'}}align="center">Name</TableCell>
+            <TableCell sx={{color:'white'}}align="left">Id</TableCell>
+            <TableCell sx={{color:'white'}}align="left">Name</TableCell>
             <TableCell sx={{color:'white'}}align="center">Email</TableCell>
             <TableCell sx={{color:'white'}}align="center">Phone </TableCell>
             <TableCell sx={{color:'white'}}align="center">Date</TableCell>
@@ -57,11 +57,8 @@ useEffect(()=>{
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-
-                {row.id}
-              </TableCell>
-              <TableCell align="right">{row.firstName}{row.lastName}</TableCell>
+              <TableCell component="th" scope="row" align='left'> {row.id}</TableCell>
+              <TableCell align="left">{row.firstName}{row.lastName}</TableCell>
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="center">{row.contactNo}</TableCell>
               <TableCell align="center">{row.orderDate}</TableCell>
