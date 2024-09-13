@@ -1,18 +1,30 @@
 import { Button, Grid2 } from '@mui/material'
 import React from 'react'
 
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 const MenuBar = ({onFilterValue,onFilter}) => {
    const menuItems=["MILK","BUTTER","GHEE","PANEER","YOGURT","BUTTERMILK","CHEESE","CURD"]
   return (
-<Grid2 bgcolor={'yellow'} container spacing={5}>
-    <Grid2  item xs={12} md={6}
-sx={{ padding: 2,display:"flex", width:"100%"}}  >
-       <Button onClick={onFilter} value="">ALL</Button>
+<Grid2 bgcolor={'#0a2bfc'} display={'flex'} justifyContent={'center'}  spacing={5}>
+        
+   <Grid2 
+    item  xs={4} sm={6} md={3} lg={2}>
+       <Button sx={{color:'white'}} onClick={onFilter} value="">ALL</Button>
+
         {menuItems.map((items,index)=>(
-            <Button key={index} onClick={onFilter} value={onFilterValue=items}>{items}</Button>
+            <Button sx={{color:'white'}} key={index} onClick={onFilter} value={onFilterValue=items}>{items}</Button>
         ))}
 
-    </Grid2>
+</Grid2>
+
+   
 </Grid2>
   )
 }
