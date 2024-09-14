@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../utils.js/AuthContext';
 import { useContext } from 'react';
 import { enqueueSnackbar } from 'notistack';
+import { red } from '@mui/material/colors';
 const Header = ({ onSearch, onSearchText, onClearText }) => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const handleLogout = () => {
@@ -59,15 +60,15 @@ const Header = ({ onSearch, onSearchText, onClearText }) => {
         </Grid2>}
         <Grid2  >
           <Link to="/">
-            <IconButton> <HomeSharpIcon fontSize='large' /> </IconButton>
+            <IconButton> <HomeSharpIcon fontSize='large' color='primary'/> </IconButton>
           </Link>
           {isLoggedIn ? (
             <Link to="/">
-              <IconButton onClick={handleLogout}> <LogoutSharpIcon fontSize='large' /> </IconButton>
+              <IconButton onClick={handleLogout}> <LogoutSharpIcon fontSize='large'sx={{color:red[500]}} /> </IconButton>
             </Link>
           ) : (
             <Link to="/login">
-              <IconButton> <LoginSharpIcon fontSize='large' />  </IconButton>
+              <IconButton> <LoginSharpIcon fontSize='large' color='success' />  </IconButton>
             </Link>
           )}
 

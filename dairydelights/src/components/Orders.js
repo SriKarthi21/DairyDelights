@@ -38,6 +38,7 @@ useEffect(()=>{
             <TableCell sx={{color:'white'}}align="center">Date</TableCell>
             <TableCell sx={{color:'white'}}align="center">Product</TableCell>
             <TableCell sx={{color:'white'}}align="center">Quantity</TableCell>
+            <TableCell sx={{color:'white'}}align="center">Price</TableCell>
             <TableCell sx={{color:'white'}}align="center">Address</TableCell>
             <TableCell sx={{color:'white'}}align="center">City</TableCell>
             <TableCell sx={{color:'white'}} align="center">State</TableCell>
@@ -64,6 +65,7 @@ useEffect(()=>{
               <TableCell align="center">{row.orderDate}</TableCell>
               <TableCell align="center">{row.productName}</TableCell>
               <TableCell align="center">{row.quantity}</TableCell>
+              <TableCell align="center">{row.total}</TableCell>
               <TableCell align="center">{row.address}</TableCell>
               <TableCell align="center">{row.city}</TableCell>
               <TableCell align="center">{row.state}</TableCell>

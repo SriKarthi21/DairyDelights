@@ -13,9 +13,7 @@ const Error = styled.p`
 `;
 const UserForm = ({product}) => {
   const{productName,id,price}=product;
-// const firstPrice=useRef(price)
-// firstPrice.current=price;
-const time=new Date()
+
   const[total,setTotal]=useState(0);
 
   const navigate=useNavigate();
@@ -23,7 +21,7 @@ const time=new Date()
     try {
       const response = await axios.post("http://localhost:3000/orders", data);
       console.log(response.data)
-      enqueueSnackbar("Order placed successfully:",{
+      enqueueSnackbar(`Order placed successfully worth of Rs ${total}`,{
         variant:"success",
         autoHideDuration:3000,
         anchorOrigin:{
@@ -40,7 +38,7 @@ const time=new Date()
 
         const onSubmit=(data)=>{
           console.log("button clicked")
-           data={...data,productName,id}
+           data={...data,productName,id,total}
           saveForm(data);
           navigate("/")
           reset();

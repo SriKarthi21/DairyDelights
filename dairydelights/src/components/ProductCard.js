@@ -11,7 +11,7 @@ const ProductCard = ({productCard}) => {
         <Link to={`/details/${id}`}  style={{textDecoration:'none'}}>
       <Card 
        sx={{ 
-          maxWidth: 400, maxHeight: 300,bgcolor: "orange"
+          maxWidth: 400, maxHeight: 300,bgcolor: "#80ffdf"
           ,borderRadius: 3, boxShadow: "5px 5px 10px rgb(210, 71, 28)"
         }}>                 
         <CardActionArea >
