@@ -173,20 +173,7 @@
     }
   ],
   "orders": [
-    {
-      "id": "2",
-      "firstName": "sri",
-      "lastName": "karthi",
-      "email": "sri02@gmail.com",
-      "contactNo": "8989898989",
-      "quantity": "1",
-      "orderDate": "2024-09-12",
-      "address": "dgag",
-      "city": "agag",
-      "state": "agfag",
-      "postalCode": "686868",
-      "productName": "Milk Bottles"
-    },
+   
     {
       "id": "2",
       "firstName": "mani",
@@ -200,20 +187,6 @@
       "state": "Tamil Nadu",
       "postalCode": "600001",
       "productName": "Milk Bottles"
-    },
-    {
-      "id": "15",
-      "firstName": "sathish",
-      "lastName": "kumar",
-      "email": "sri02@gmail.com",
-      "contactNo": "8989898989",
-      "quantity": "4",
-      "orderDate": "2024-09-12",
-      "address": "dgag  ",
-      "city": "agag ",
-      "state": "agfag ",
-      "postalCode": "686008",
-      "productName": "Healthy Yogurt"
     },
     {
       "id": "12",
@@ -242,6 +215,34 @@
       "state": "tn",
       "postalCode": "999999",
       "productName": "Plain Yogurt - Sweet"
+    },
+    {
+      "id": "15",
+      "firstName": "sasi",
+      "lastName": "kumar",
+      "email": "kumar@gmail.com",
+      "contactNo": "7878787878",
+      "quantity": "3",
+      "orderDate": "2024-09-14",
+      "address": "12,ABC street",
+      "city": "chennnai",
+      "state": "Tamil Nadu",
+      "postalCode": "600003",
+      "productName": "Healthy Yogurt"
+    },
+    {
+      "id": "7",
+      "firstName": "ajith",
+      "lastName": "kumar",
+      "email": "Ajithkumar@gmail.com",
+      "contactNo": "8989898989",
+      "quantity": "5",
+      "orderDate": "2024-09-14",
+      "address": "12,XYZ street",
+      "city": "chennai",
+      "state": "Tamil Nadu",
+      "postalCode": "600222",
+      "productName": "Cheese Slice"
     }
   ]
 }

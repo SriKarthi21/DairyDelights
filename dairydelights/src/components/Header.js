@@ -13,11 +13,11 @@ const Header = ({ onSearch, onSearchText, onClearText }) => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const handleLogout = () => {
     enqueueSnackbar("Logut Successfully !!!", {
-      variant: "success",
+      variant: "info",
       autoHideDuration: 2000,
       anchorOrigin: {
         vertical: "top",
-        horizontal: "right"
+        horizontal: "center"
       }
     });
     logout();

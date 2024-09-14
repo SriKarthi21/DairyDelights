@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { Button,  Grid2, TextField, Typography } from '@mui/material'
 import axios from 'axios';
 import styled from '@emotion/styled/macro';
 import { useNavigate } from 'react-router-dom';
-import { enqueueSnackbar, useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
+import { useRef } from 'react';
 const Error = styled.p`
   color: red;
   font-size: 0.8rem;
   margin:0;
 `;
 const UserForm = ({product}) => {
+  const{productName,id,price}=product;
+// const firstPrice=useRef(price)
+// firstPrice.current=price;
+const time=new Date()
+  const[total,setTotal]=useState(0);
+
   const navigate=useNavigate();
   const saveForm=async(data)=> {
     try {
@@ -18,10 +25,10 @@ const UserForm = ({product}) => {
       console.log(response.data)
       enqueueSnackbar("Order placed successfully:",{
         variant:"success",
-        autoHideDuration:2000,
+        autoHideDuration:3000,
         anchorOrigin:{
           vertical:"top",
-          horizontal:"right"
+          horizontal:"center"
         }
       });
     } 
@@ -30,7 +37,6 @@ const UserForm = ({product}) => {
       enqueueSnackbar("Error while adding", {variant:"error"});
     }
   };
-  const{productName,id,price}=product;
 
         const onSubmit=(data)=>{
           console.log("button clicked")
@@ -39,18 +45,19 @@ const UserForm = ({product}) => {
           navigate("/")
           reset();
         };
+
     const{register,handleSubmit,formState:{errors},trigger,reset}=useForm();
   return (
     <div>
             <Grid2    spacing={5} alignContent={'center'}>
             
             <Grid2 display={'flex'}p={2}  xs={12} sm={6} >
-            
             <form style={{  flexDirection: 'column' ,overflow:'hidden'}}
           onSubmit={handleSubmit(onSubmit)}   >
-             <Typography variant='h4' color='blue'>{productName}</Typography>
-              <Typography variant='subtitle' p='2px' bgcolor={"gray"} color='white'>&#8377; {price}</Typography>
-             
+             <Typography variant='h4' color='blue'>{productName}            
+             </Typography>
+              <Typography variant='subtitle' bgcolor={"gray"} color='white' sx={{display:'flex',width:'200px'}}>
+                &#8377; {price}</Typography>
   <Grid2  container spacing={5}>
     <Grid2 item xs={12} md={6}mb={1}> 
             <TextField width={'100%'} name='firstName' variant="standard"  label="First Name *"
@@ -95,12 +102,19 @@ const UserForm = ({product}) => {
           </Grid2>
 </Grid2>
 <Grid2 container spacing={5}mb={1}>
-  <Grid2 item xs={12}  md={6} lg={4}><TextField  name='quantity'label='Quantity *' variant='standard'
+  <Grid2 item xs={12}  md={6} lg={4}><TextField  name='quantity'label='Quantity *' variant='standard' 
             {...register('quantity',{
               required:'Quantity is required',
-              validate:(value)=>{if(value<=0)return "Number can't be Negative/Zero"}
-            })} type='number' fullWidth
-            onBlur={(e)=>trigger('quantity')}/> <Error>{errors.quantity?.message}</Error>
+              validate:(value)=>{if(value<=0)return "Number can't be Negative/Zero"},
+              onChange: (e)=>{
+                let value=e.target.value
+                if(value<1 ){  setTotal(0)}
+                else{     setTotal(value*price)} 
+              }
+            })} 
+            onBlur={(e)=>trigger('quantity')}type='number' fullWidth
+            /> <Error>{errors.quantity?.message}</Error>
+
             </Grid2>
   <Grid2 item xs={12} md={6}><TextField  name='orderDate' label='Order Date' variant='standard'
             {...register('orderDate')}slotProps={{
@@ -158,6 +172,7 @@ const UserForm = ({product}) => {
     </Grid2>
 
             <br/>
+            <p> Total price : {total} </p>
             <Grid2 display={'flex'}  justifyContent={'space-evenly'} >         
               <Button  variant='contained' type="reset" onClick={() => reset()}>Reset</Button>
               <Button  variant='contained' type="submit">Place Order</Button>
