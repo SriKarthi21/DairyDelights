@@ -173,8 +173,6 @@
     }
   ],
   "orders": [
-    
-    
     {
       "id": "13",
       "firstName": "mani",
@@ -234,6 +232,21 @@
       "postalCode": "234553",
       "productName": "Healthy Yogurt",
       "total": 1000
+    },
+    {
+      "id": "6",
+      "firstName": "sri",
+      "lastName": "karthi",
+      "email": "srikarthi@gmail.com",
+      "contactNo": "8888888888",
+      "quantity": "2",
+      "orderDate": "2024-09-23",
+      "address": "abc street",
+      "city": "chennai",
+      "state": "tamil Nadu",
+      "postalCode": "888888",
+      "productName": "Cheese Cubes",
+      "total": 160
     }
   ]
 }

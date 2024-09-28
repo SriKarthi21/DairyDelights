@@ -59,7 +59,7 @@ const Login = () => {
          onChange={handleChange} 
          placeholder="Admin Name" />
         <TextField  variant='outlined' name="adminPassword"
-         onChange={handleChange}
+              onChange={handleChange} type='password'
           placeholder="Admin Password"/>
 <br/>
         <Button variant='contained'  type="submit">Login</Button>
