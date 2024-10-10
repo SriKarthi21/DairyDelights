@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "aws-amplify": "^6.6.4",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -20,7 +21,6 @@
     "react-hook-form": "^7.53.0",
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "5.0.1",
     "styled-components": "^6.1.13",
     "web-vitals": "^2.1.4"
   },
@@ -49,6 +49,14 @@
     ]
   },
   "devDependencies": {
-    "@hookform/devtools": "^4.3.1"
+    "@aws-amplify/backend": "^1.4.0",
+    "@aws-amplify/backend-cli": "^1.2.9",
+    "@hookform/devtools": "^4.3.1",
+    "aws-cdk": "^2.161.1",
+    "aws-cdk-lib": "^2.161.1",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
   }
 }
